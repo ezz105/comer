@@ -9,4 +9,12 @@ class ProductAttribute extends Model
 {
     /** @use HasFactory<\Database\Factories\ProductAttributeFactory> */
     use HasFactory;
+
+    protected $guarded = [];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+
 }

@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
             $table->string('order_number', 100)->unique();
             $table->enum('status', ['pending', 'processing', 'shipped', 'delivered', 'cancelled'])->default('pending');
             $table->decimal('total_amount', 10, 2);
@@ -22,10 +21,12 @@ return new class extends Migration
             $table->decimal('discount_amount', 10, 2)->default(0);
             $table->enum('payment_status', ['pending', 'paid', 'failed', 'refunded'])->default('pending');
             $table->string('payment_method', 50)->nullable();
-            $table->foreignId('shipping_address_id')->constrained('addresses');
-            $table->foreignId('billing_address_id')->constrained('addresses');
             $table->text('notes')->nullable();
             $table->timestamps();
+
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('shipping_address_id')->constrained('addresses');
+            $table->foreignId('billing_address_id')->constrained('addresses');
         });
     }
 

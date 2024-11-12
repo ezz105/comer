@@ -30,7 +30,9 @@ class DatabaseSeeder extends Seeder
         User::factory(10)->create();
 
         $this->call([
-            UserProfileSeeder::class,
+            UserProfileSeeder::class,   // to create 10 user profiles
+            CategorySeeder::class,      // to create 5 categories and 15 subcategories
+            
         ]);
     }
 }

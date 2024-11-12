@@ -40,6 +40,7 @@ class DatabaseSeeder extends Seeder
             CartSeeder::class,             // to create 1 cart for each user
             CartItemSeeder::class,         // to create 1 cart item for each cart
             OrderItemSeeder::class,        // to create 3 order items for each order
+            ReviewSeeder::class,           // to create 3 reviews for each order item
 
         ]);
     }

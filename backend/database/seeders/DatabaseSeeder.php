@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
             UserProfileSeeder::class,   // to create 10 user profiles
             CategorySeeder::class,      // to create 5 categories and 15 subcategories
             ProductSeeder::class,       // to create 20 products
+            ProductImageSeeder::class,  // to create 3 images for each product
 
         ]);
     }

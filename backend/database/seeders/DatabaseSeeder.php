@@ -36,6 +36,7 @@ class DatabaseSeeder extends Seeder
             ProductImageSeeder::class,  // to create 3 images for each product
             ProductAttributeSeeder::class, // to create 3 attributes for each product
             AddressSeeder::class,          // to create 3 addresses for each user
+            OrderSeeder::class,            // to create 10 orders for each user (customer) with related addresses
 
         ]);
     }

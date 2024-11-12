@@ -38,6 +38,7 @@ class DatabaseSeeder extends Seeder
             AddressSeeder::class,          // to create 3 addresses for each user
             OrderSeeder::class,            // to create 10 orders for each user (customer) with related addresses
             CartSeeder::class,             // to create 1 cart for each user
+            CartItemSeeder::class,         // to create 1 cart item for each cart
 
         ]);
     }

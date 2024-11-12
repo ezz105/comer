@@ -29,8 +29,8 @@ class DatabaseSeeder extends Seeder
         // creates 10 users with random roles and status
         User::factory(10)->create();
 
-        // $this->call([
-        //     RoleSeeder::class,
-        // ]);
+        $this->call([
+            UserProfileSeeder::class,
+        ]);
     }
 }

@@ -41,6 +41,7 @@ class DatabaseSeeder extends Seeder
             CartItemSeeder::class,         // to create 1 cart item for each cart
             OrderItemSeeder::class,        // to create 3 order items for each order
             ReviewSeeder::class,           // to create 3 reviews for each order item
+            WishlistSeeder::class,         // to create 5 wishlists for each user
 
         ]);
     }

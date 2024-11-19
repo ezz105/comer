@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable , SoftDeletes; // Make sure to use SoftDeletes
+    use HasFactory, Notifiable, SoftDeletes, HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
@@ -19,7 +20,12 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name', 'email', 'password', 'phone_number', 'role_id', 'status'
+        'name',
+        'email',
+        'password',
+        'phone_number',
+        'role_id',
+        'status'
     ];
 
 
@@ -52,6 +58,7 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
+
     public function Userprofile()
     {
         return $this->hasOne(UserProfile::class);
@@ -70,6 +77,24 @@ class User extends Authenticatable
     public function cart()
     {
         return $this->hasOne(Cart::class);
+    }
+    public function isAdmin()
+    {
+        // return $this->role && $this->role->name === 'admin';
+        return $this->role_id === 1;
+
+    }
+
+    public function isVendor()
+    {
+        // return $this->role && $this->role->name === 'vendor';
+        return $this->role_id === 2;
+    }
+
+    public function isCustomer()
+    {
+        // return $this->role && $this->role->name === 'customer';
+        return $this->role_id === 3;
     }
 
 }

@@ -3,35 +3,12 @@
     <x-slot name="title">
         Manage Products
     </x-slot>
+    <x-header-pannel>
+     Product list 
+    </x-header-pannel>
 
 
-    <!-- Header Section -->
-    <div
-        class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-4 md:p-6 rounded-xl shadow-sm">
 
-        <div>
-            <h1 class="text-xl sm:text-2xl font-bold text-gray-800">Products Management</h1>
-            <p class="text-sm sm:text-base text-gray-500">Manage your product catalog</p>
-        </div>
-
-        <div class="flex flex-col sm:flex-row gap-3">
-            <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 flex items-center gap-2">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
-                </svg>
-                Export
-            </button>
-            <a href="{{ route('products.create') }}"
-                class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 flex items-center gap-2 transition-colors">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                </svg>
-                Add Product
-            </a>
-        </div>
-    </div>
 
     <!-- Search and Filters -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6">
@@ -85,7 +62,7 @@
                     <div class="h-48 rounded-t-xl bg-gray-200"></div>
                     <div class="absolute top-3 right-3">
                         <span class="px-3 py-1 text-sm rounded-full
-                                        {{ $product->status == 'active' ? 'bg-green-100 text-green-800' :
+                                            {{ $product->status == 'active' ? 'bg-green-100 text-green-800' :
             ($product->status == 'inactive' ? 'bg-red-100 text-red-800' :
                 'bg-gray-100 text-gray-800') }}">
                             {{ ucfirst($product->status) }}

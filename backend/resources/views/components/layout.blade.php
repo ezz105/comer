@@ -11,30 +11,31 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+    <!-- Alpine.js For List item three points list  -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body>
-    <div class="flex h-screen bg-gradient-to-br from-gray-50 to-gray-100">
-        <!-- Sidebar -->
 
+    <div class="flex min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
         <x-sidebar />
 
-
-        <div id="main-content" class="flex-1 flex flex-col min-h-screen transition-all duration-300 ease-in-out">
-
-            <!-- Navbar -->
+        <div id="main-content" class="flex-1 gap-4 flex flex-col  transition-all duration-300 ease-in-out
+                w-full">
             <x-navbar />
 
-
-            <!-- Content Area -->
-            <main class="p-6 space-y-6 flex-grow overflow-y-auto">
-
+            <main class="p-6 space-y-6 overflow-y-auto overflow-x-hidden">
                 {{ $slot }}
-
             </main>
         </div>
     </div>
+
+    <script>
+
+    </script>
+
 </body>
 
 </html>

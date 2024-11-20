@@ -16,6 +16,11 @@ use App\Models\Product;
         return view('dashboard.products.index', compact('products'));
     })->name('products.index');
 
+    Route::get('/products/{product}', function ( $product) {
+        $product = Product::find($product);
+        return view('dashboard.products.show', compact('product'));
+    })->name('products.show');
+
     Route::get('/products/create', function () {
         return view('dashboard.products.create');
     })->name('products.create');

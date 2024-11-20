@@ -10,8 +10,6 @@
 
     </div>
 
-
-
     <!-- Charts Section -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
@@ -86,9 +84,6 @@
         <h3 class="text-lg font-semibold text-gray-800 mb-4">Recent Activity</h3>
         <!-- Add activity list here -->
     </div>
-
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 

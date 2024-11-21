@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\User;
 
 // Dashboard Route ------
 
@@ -60,6 +61,18 @@ use App\Models\Category;
 
 //End Products Route -----------------------------------------------------------
 
+// Users Route -----------------------------------------------------------
+
+    Route::get('/users', function () {
+
+        $users = User::with('role')->orderBy('name')->paginate(10);
+
+        return view('dashboard.users.index', compact('users'));
+    })->name('users.index');
+
+
+//End Users Route -----------------------------------------------------------
+
 
 // Categories Route
 Route::get('/categories', function () {
@@ -80,10 +93,7 @@ Route::get('/vendors', function () {
     return "Manage Vendors"; // Replace with view('vendors.index') when implemented
 })->name('vendors.index');
 
-// Customers Route
-Route::get('/users', function () {
-    return "Manage Users"; // Replace with view('users.index') when implemented
-})->name('users.index');
+
 
 
 

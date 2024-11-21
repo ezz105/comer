@@ -9,9 +9,7 @@
         </div>
     </x-panel>
     <x-panel>
-        <!-- Add Product Form -->
-        <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data" class="space-y-8">
-            @csrf
+    <x-form.form action="{{ route('products.store') }}" enctype="multipart/form-data">
 
             <!-- Basic Product Information -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -135,8 +133,8 @@
                     Add Product
                 </button>
             </div>
-        </form>
 
+        </x-form.form>
 
     </x-panel>
 

@@ -14,6 +14,9 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                sidebar: '#1E293B', // Customize sidebar color
+              },
         },
     },
     plugins: [],

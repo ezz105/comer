@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('meta_title', 255)->nullable();
             $table->text('meta_description')->nullable();
             $table->timestamps();
-            $table->softDeletes(); 
+            $table->softDeletes();
         });
     }
 

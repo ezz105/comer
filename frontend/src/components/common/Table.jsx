@@ -1,16 +1,16 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const Table = ({ headers, rows }) => {
     return (
-        <div className="overflow-x-auto shadow-lg rounded-lg">
-            <table className="min-w-full table-auto border-collapse border border-gray-200">
+        <div className="overflow-x-auto rounded-4xl shadow-md bg-light-background dark:bg-dark-background">
+            <table className="min-w-full border-collapse table-auto border border-light-table-border dark:border-dark-table-border">
                 <thead>
-                    <tr className="bg-gray-100 text-gray-800">
+                    <tr className="bg-light-table-header dark:bg-dark-table-header">
                         {headers.map((header, index) => (
                             <th
                                 key={index}
-                                className="px-6 py-4 text-left font-semibold text-sm uppercase tracking-wider border-b border-gray-300"
+                                className="px-6 py-4 text-left text-sm font-bold uppercase tracking-wide text-light-table-text dark:text-dark-table-text border-b border-light-table-border dark:border-dark-table-border"
                             >
                                 {header}
                             </th>
@@ -21,12 +21,15 @@ const Table = ({ headers, rows }) => {
                     {rows.map((row, rowIndex) => (
                         <tr
                             key={rowIndex}
-                            className={`hover:bg-gray-50 ${rowIndex % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}
+                            className={`transition-colors hover:bg-light-table-hover dark:hover:bg-dark-table-hover ${rowIndex % 2 === 0
+                                ? 'bg-light-table-row dark:bg-dark-table-row'
+                                : 'bg-light-table-altRow dark:bg-dark-table-altRow'
+                                }`}
                         >
                             {row.map((cell, cellIndex) => (
                                 <td
                                     key={cellIndex}
-                                    className="px-6 py-4 text-sm text-gray-700 border-b border-gray-200"
+                                    className="px-6 py-4 text-sm text-light-table-text dark:text-dark-table-text border-b border-light-table-border dark:border-dark-table-border"
                                 >
                                     {cell}
                                 </td>
@@ -36,12 +39,12 @@ const Table = ({ headers, rows }) => {
                 </tbody>
             </table>
         </div>
-    )
-}
+    );
+};
 
 Table.propTypes = {
     headers: PropTypes.arrayOf(PropTypes.string).isRequired,
     rows: PropTypes.arrayOf(PropTypes.array).isRequired,
-}
+};
 
-export default Table
+export default Table;

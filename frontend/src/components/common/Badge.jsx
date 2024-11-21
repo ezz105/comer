@@ -3,11 +3,11 @@ import PropTypes from 'prop-types'
 
 const Badge = ({ text, variant = 'primary', size = 'md', className = '' }) => {
     const variants = {
-        primary: 'bg-blue-500 text-white',
-        secondary: 'bg-gray-200 text-gray-800',
+        primary: 'bg-light-primary text-white dark:bg-dark-primary',
+        secondary: 'bg-light-secondary text-light-text dark:bg-dark-secondary dark:text-dark-text',
         success: 'bg-green-500 text-white',
         danger: 'bg-red-500 text-white',
-        warning: 'bg-yellow-500 text-white',
+        warning: 'bg-yellow-500 text-black',
         info: 'bg-teal-500 text-white',
     }
 
@@ -19,7 +19,7 @@ const Badge = ({ text, variant = 'primary', size = 'md', className = '' }) => {
 
     return (
         <span
-            className={`inline-block rounded-full ${variants[variant]} ${sizes[size]} font-medium ${className}`}
+            className={`inline-block rounded-full ${variants[variant]} ${sizes[size]} font-semibold shadow-md transition-all hover:shadow-lg ${className}`}
         >
             {text}
         </span>

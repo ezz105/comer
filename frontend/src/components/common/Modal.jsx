@@ -1,37 +1,53 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Modal = ({ isOpen, title, children, onClose }) => {
-    if (!isOpen) return null
+    const handleOverlayClick = (e) => {
+        if (e.target === e.currentTarget) {
+            onClose();
+        }
+    };
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-            <div className="bg-white rounded-lg shadow-lg w-1/3">
-                <div className="flex justify-between items-center border-b px-4 py-2">
-                    <h3 className="text-lg font-semibold">{title}</h3>
-                    <button onClick={onClose} className="text-gray-500 hover:text-gray-700">
-                        &times;
-                    </button>
-                </div>
-                <div className="p-4">{children}</div>
-                <div className="flex justify-end border-t px-4 py-2">
-                    <button
-                        onClick={onClose}
-                        className="bg-gray-200 hover:bg-gray-300 text-gray-700 px-4 py-2 rounded-md"
+        <AnimatePresence>
+            {isOpen && (
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 dark:bg-opacity-70"
+                    onClick={handleOverlayClick}
+                >
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        className="bg-white dark:bg-dark-background rounded-3xl shadow-2xl w-full max-w-xl mx-4 sm:mx-0"
                     >
-                        Close
-                    </button>
+                        <div className="flex justify-between items-center px-6 py-4 border-b border-light-border dark:border-dark-border">
+                            <h3 className="text-xl font-bold text-light-text dark:text-dark-text text-center">
+                                {title}
+                            </h3>
+                            <button
+                                onClick={onClose}
+                                className="w-8 h-8 rounded-full flex items-center justify-center bg-light-secondary dark:bg-dark-secondary text-white hover:scale-110 transition-transform"
+                            >
+                                &times;
+                            </button>
+                        </div>
+                        <div className="p-6 text-light-text dark:text-dark-text">
+                            {children}
+                        </div>
+                    </motion.div>
                 </div>
-            </div>
-        </div>
-    )
-}
+            )}
+        </AnimatePresence>
+    );
+};
 
 Modal.propTypes = {
     isOpen: PropTypes.bool.isRequired,
     title: PropTypes.string,
     children: PropTypes.node.isRequired,
     onClose: PropTypes.func.isRequired,
-}
+};
 
-export default Modal
+export default Modal;

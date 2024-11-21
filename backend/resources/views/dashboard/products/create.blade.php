@@ -31,11 +31,11 @@
             </div>
 
             <!-- Description -->
-            <div class="space-y-2">
-                <label for="description" class="text-sm font-medium text-gray-700">Description</label>
-                <textarea id="description" name="description" rows="4" placeholder="Enter product description"
-                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-indigo-300"></textarea>
-            </div>
+            <x-form.textarea
+                name="description"
+                label="Description"
+                placeholder="Enter product description"
+            />
 
             <!-- Pricing & Inventory -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">

@@ -3,10 +3,9 @@
     <x-slot name="title">
         Manage Products
     </x-slot>
-    <x-header-pannel>
-     Product list 
-    </x-header-pannel>
-
+    <x-panel >
+        <x-heading>Manage Products</x-heading>
+    </x-panel>
 
 
 

@@ -3,12 +3,28 @@
     <x-slot name="title">
         Manage Products
     </x-slot>
+
+
     <x-panel>
         <div>
             <x-heading>Manage Products</x-heading>
             <x-sub-heading>You can manage your products here</x-sub-heading>
         </div>
 
+        <div class="flex flex-col sm:flex-row gap-3">
+
+            <!-- Add Export Button -->
+            <x-button type="secondary" href="#" icon="upload">
+                Export
+            </x-button>
+
+            <!-- Add Product Button -->
+            <x-button type="primary" href="products.create" icon="add">
+                Add Product
+            </x-button>
+
+
+        </div>
     </x-panel>
 
 
@@ -56,7 +72,7 @@
         </div>
     </div>
 
-    <!-- Products Grid -->
+
     <!-- Products Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         @foreach ($products as $product)
@@ -65,7 +81,7 @@
                     <div class="h-48 rounded-t-xl bg-gray-200"></div>
                     <div class="absolute top-3 right-3">
                         <span class="px-3 py-1 text-sm rounded-full
-                                                {{ $product->status == 'active' ? 'bg-green-100 text-green-800' :
+                                                                                {{ $product->status == 'active' ? 'bg-green-100 text-green-800' :
             ($product->status == 'inactive' ? 'bg-red-100 text-red-800' :
                 'bg-gray-100 text-gray-800') }}">
                             {{ ucfirst($product->status) }}
@@ -119,6 +135,9 @@
             </div>
         @endforeach
     </div>
+
+
+    
     <!-- Pagination -->
     <x-pagination :items="$products" />
 </x-layout>

@@ -9,6 +9,18 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeSidebar();
     initializeImageUpload();
 
+    new TomSelect('#category-select', {
+        placeholder: 'Select a category',
+        allowEmptyOption: true,
+        maxOptions: 10,
+
+    });
+
+    new TomSelect('#status-select', {
+        placeholder: 'Select a product',
+        allowEmptyOption: true,
+        maxOptions: 5,
+    });
 });
 
 

@@ -4,13 +4,11 @@
     </x-slot>
 
     <x-panel>
-        <div>
-            <x-heading>Add New Product</x-heading>
-        </div>
-    </x-panel>
-    <x-panel>
         <x-form.form action="{{ route('products.store') }}" enctype="multipart/form-data">
-
+            <div>
+                <x-heading>Add New Product</x-heading>
+            </div>
+            <hr />
             <!-- Basic Product Information -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <!-- Product Name -->
@@ -33,8 +31,25 @@
                 <x-form.input type="number" name="discount_price" label="Discount Price"
                     placeholder="Enter discount price (optional)" step="0.01" />
             </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Status -->
+                <x-form.select name="status" label="Status" id="status-select">
+                    <option value="draft">Draft</option>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                    <option value="out_of_stock">Out of Stock</option>
+                </x-form.select>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Category -->
+                <x-form.select name="category_id" label="Category" required id="category-select">
+                    <option value="">Select a category</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </x-form.select>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <!-- Stock Quantity -->
                 <x-form.input type="number" name="stock_quantity" label="Stock Quantity"
                     placeholder="Enter stock quantity" required />
@@ -42,14 +57,9 @@
                 <!-- SKU -->
                 <x-form.input name="sku" label="SKU" placeholder="Enter SKU" required />
 
-                <!-- Status -->
-                <x-form.select name="status" label="Status">
-                    <option value="draft">Draft</option>
-                    <option value="active">Active</option>
-                    <option value="inactive">Inactive</option>
-                    <option value="out_of_stock">Out of Stock</option>
-                </x-form.select>
+
             </div>
+
 
             <!-- SEO Information -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -69,7 +79,6 @@
                 </div>
             </div>
 
-            <!-- Product Images -->
             <!-- Product Images -->
             <div class="space-y-4">
                 <div class="space-y-2">
@@ -100,19 +109,35 @@
                 </div>
             </div>
 
-            <!-- Product Attributes -->
-            <div class="space-y-4 border border-gray-300 rounded-lg p-4">
-                <div class="flex items-center justify-between">
-                    <label class="text-sm font-medium text-gray-700">Product Attributes</label>
-                    <button type="button" id="add-attribute"
-                        class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded hover:bg-indigo-700 focus:ring focus:ring-indigo-300">
-                        Add Attribute
-                    </button>
-                </div>
-                <div id="attributes-container" class="space-y-4">
-                    <!-- Attributes will be dynamically added here -->
-                </div>
-            </div>
+<!-- Product Attributes -->
+<div class="flex flex-col space-y-4 border border-gray-300 rounded-lg p-4">
+    <!-- Header -->
+    <div class="flex flex-wrap items-center justify-between">
+        <label class="text-sm font-medium text-gray-700 flex-1 md:flex-none">
+            Product Attributes
+            <span class="text-xs text-gray-500">(optional)</span>
+        </label>
+        <div class="flex justify-end mt-2 md:mt-0">
+            <button
+                type="button"
+                id="add-attribute"
+                class="relative flex items-center justify-center w-full md:w-auto px-2 py-1  md:px-4 md:py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 focus:ring focus:ring-indigo-300 focus:outline-none"
+            >
+                <!-- Icon for small screens -->
+                <span class="material-icons block mr-0 md:mr-2">add</span>
+
+                <!-- Text for medium and larger screens -->
+                <span class="hidden md:block">Add Attribute</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Attributes Container -->
+    <div id="attributes-container" class="space-y-4">
+        <!-- Dynamically added attributes will appear here -->
+    </div>
+</div>
+
             <!-- Submit Button -->
             <div class="flex justify-end">
                 <button type="submit"
@@ -123,3 +148,50 @@
         </x-form.form>
     </x-panel>
 </x-layout>
+
+<script>
+const attributesContainer = document.getElementById('attributes-container');
+const addAttributeBtn = document.getElementById('add-attribute');
+
+addAttributeBtn.addEventListener('click', () => {
+    const attributeRow = document.createElement('div');
+
+    // Responsive classes for grid layout
+    attributeRow.className = 'grid grid-cols-1 gap-4 md:grid-cols-2';
+
+    attributeRow.innerHTML = `
+        <div>
+            <!-- Input for Attribute Name -->
+            <input
+                type="text"
+                name="attributes[name][]"
+                placeholder="Attribute Name (e.g., RAM)"
+                class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-indigo-300"
+                required
+            >
+        </div>
+        <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-4">
+            <!-- Input for Attribute Value -->
+            <input
+                type="text"
+                name="attributes[value][]"
+                placeholder="Value (e.g., 16GB)"
+                class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-indigo-300"
+                required
+            >
+            <!-- Remove Button -->
+            <button
+                type="button"
+                class="text-red-600 hover:text-red-800 flex items-center justify-center"
+                onclick="this.parentElement.parentElement.remove()"
+            >
+                <span class="material-icons">delete</span>
+                <span class="hidden md:inline-block ml-1">Remove</span>
+            </button>
+        </div>
+    `;
+
+    attributesContainer.appendChild(attributeRow);
+});
+
+</script>

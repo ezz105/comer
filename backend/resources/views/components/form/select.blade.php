@@ -2,15 +2,18 @@
     'name',
     'label',
     'options' => [],
-    'required' => false
+    'required' => false,
+    'id' => null, // Accept custom ID
 ])
 
 @php
-    $defaultClasses = 'w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-indigo-300';
+    $defaultClasses = 'w-full border rounded-lg focus:outline-none focus:ring focus:ring-indigo-300';
+
+    // Use the provided ID or default to the name attribute
     $defaults = [
-        'id' => $name,
+        'id' => $id ?? $name, // Custom ID takes priority
         'name' => $name,
-        'class' => $defaultClasses
+        'class' => $defaultClasses,
     ];
 
     if ($required) {
@@ -19,7 +22,7 @@
 @endphp
 
 <div class="space-y-2">
-    <x-form.label :for="$name">{{ $label }}</x-form.label>
+    <x-form.label :for="$id ?? $name">{{ $label }}</x-form.label> <!-- Use the custom ID or fallback to name -->
     <select {{ $attributes->merge($defaults) }}>
         {{ $slot }}
     </select>

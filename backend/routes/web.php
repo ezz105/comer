@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Models\Product;
+use App\Models\Category;
 
 // Dashboard Route ------
 
@@ -23,9 +24,8 @@ use App\Models\Product;
 
     //create
     Route::get('/products/create', function () {
-
-        return view('dashboard.products.create');
-
+        $categories = Category::orderBy('name')->get();
+        return view('dashboard.products.create', compact('categories'));
     })->name('products.create');
 
     //show

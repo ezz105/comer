@@ -14,20 +14,20 @@
             <!-- Basic Product Information -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <!-- Product Name -->
-                <div class="space-y-2">
-                    <label for="name" class="text-sm font-medium text-gray-700">Product Name</label>
-                    <input type="text" id="name" name="name" placeholder="Enter product name"
-                        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-indigo-300"
-                        required>
-                </div>
+                <x-form.input
+                    name="name"
+                    label="Product Name"
+                    placeholder="Enter product name"
+                    required
+                />
 
                 <!-- Slug -->
-                <div class="space-y-2">
-                    <label for="slug" class="text-sm font-medium text-gray-700">Slug</label>
-                    <input type="text" id="slug" name="slug" placeholder="Enter unique slug"
-                        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-indigo-300"
-                        required>
-                </div>
+                <x-form.input
+                    name="slug"
+                    label="Slug"
+                    placeholder="Enter unique slug"
+                    required
+                />
             </div>
 
             <!-- Description -->
@@ -40,39 +40,42 @@
             <!-- Pricing & Inventory -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <!-- Price -->
-                <div class="space-y-2">
-                    <label for="price" class="text-sm font-medium text-gray-700">Price</label>
-                    <input type="number" id="price" name="price" placeholder="Enter product price"
-                        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-indigo-300"
-                        step="0.01" required>
-                </div>
+                <x-form.input
+                    type="number"
+                    name="price"
+                    label="Price"
+                    placeholder="Enter product price"
+                    step="0.01"
+                    required
+                />
 
                 <!-- Discount Price -->
-                <div class="space-y-2">
-                    <label for="discount_price" class="text-sm font-medium text-gray-700">Discount Price</label>
-                    <input type="number" id="discount_price" name="discount_price"
-                        placeholder="Enter discount price (optional)"
-                        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-indigo-300"
-                        step="0.01">
-                </div>
+                <x-form.input
+                    type="number"
+                    name="discount_price"
+                    label="Discount Price"
+                    placeholder="Enter discount price (optional)"
+                    step="0.01"
+                />
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <!-- Stock Quantity -->
-                <div class="space-y-2">
-                    <label for="stock_quantity" class="text-sm font-medium text-gray-700">Stock Quantity</label>
-                    <input type="number" id="stock_quantity" name="stock_quantity" placeholder="Enter stock quantity"
-                        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-indigo-300"
-                        required>
-                </div>
+                <x-form.input
+                    type="number"
+                    name="stock_quantity"
+                    label="Stock Quantity"
+                    placeholder="Enter stock quantity"
+                    required
+                />
 
                 <!-- SKU -->
-                <div class="space-y-2">
-                    <label for="sku" class="text-sm font-medium text-gray-700">SKU</label>
-                    <input type="text" id="sku" name="sku" placeholder="Enter SKU"
-                        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-indigo-300"
-                        required>
-                </div>
+                <x-form.input
+                    name="sku"
+                    label="SKU"
+                    placeholder="Enter SKU"
+                    required
+                />
 
                 <!-- Status -->
                 <div class="space-y-2">

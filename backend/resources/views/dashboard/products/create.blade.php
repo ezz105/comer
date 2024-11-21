@@ -78,16 +78,12 @@
                 />
 
                 <!-- Status -->
-                <div class="space-y-2">
-                    <label for="status" class="text-sm font-medium text-gray-700">Status</label>
-                    <select id="status" name="status"
-                        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-indigo-300">
-                        <option value="draft">Draft</option>
-                        <option value="active">Active</option>
-                        <option value="inactive">Inactive</option>
-                        <option value="out_of_stock">Out of Stock</option>
-                    </select>
-                </div>
+                <x-form.select name="status" label="Status">
+                    <option value="draft">Draft</option>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                    <option value="out_of_stock">Out of Stock</option>
+                </x-form.select>
             </div>
 
             <!-- SEO Information -->

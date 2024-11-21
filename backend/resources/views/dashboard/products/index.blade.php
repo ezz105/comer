@@ -81,7 +81,7 @@
                     <div class="h-48 rounded-t-xl bg-gray-200"></div>
                     <div class="absolute top-3 right-3">
                         <span class="px-3 py-1 text-sm rounded-full
-                                                                                {{ $product->status == 'active' ? 'bg-green-100 text-green-800' :
+                                {{ $product->status == 'active' ? 'bg-green-100 text-green-800' :
             ($product->status == 'inactive' ? 'bg-red-100 text-red-800' :
                 'bg-gray-100 text-gray-800') }}">
                             {{ ucfirst($product->status) }}
@@ -137,7 +137,7 @@
     </div>
 
 
-    
+
     <!-- Pagination -->
     <x-pagination :items="$products" />
 </x-layout>

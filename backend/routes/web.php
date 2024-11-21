@@ -35,6 +35,11 @@ use App\Models\Product;
 
     })->name('products.show');
 
+    //store
+    Route::post('/products', function () {
+
+        return redirect()->route('products.index');
+    })->name('products.store');
 
 
     Route::get('/products/{product}/edit', function (Product $product) {
@@ -65,35 +70,35 @@ Route::get('/categories', function () {
 
 
 
-// // Orders Route
-// Route::get('/orders', function () {
-//     return "Manage Orders"; // Replace with view('orders.index') when implemented
-// })->name('orders.index');
+// Orders Route
+Route::get('/orders', function () {
+    return "Manage Orders"; // Replace with view('orders.index') when implemented
+})->name('orders.index');
 
-// // Vendors Route
-// Route::get('/vendors', function () {
-//     return "Manage Vendors"; // Replace with view('vendors.index') when implemented
-// })->name('vendors.index');
+// Vendors Route
+Route::get('/vendors', function () {
+    return "Manage Vendors"; // Replace with view('vendors.index') when implemented
+})->name('vendors.index');
 
-// // Customers Route
-// Route::get('/users', function () {
-//     return "Manage Users"; // Replace with view('users.index') when implemented
-// })->name('users.index');
+// Customers Route
+Route::get('/users', function () {
+    return "Manage Users"; // Replace with view('users.index') when implemented
+})->name('users.index');
 
 
 
-// // Analytics Route
-// Route::get('/analytics', function () {
-//     return "View Analytics"; // Replace with view('analytics.index') when implemented
-// })->name('analytics.index');
+// Analytics Route
+Route::get('/analytics', function () {
+    return "View Analytics"; // Replace with view('analytics.index') when implemented
+})->name('analytics.index');
 
-// // Settings Route
-// Route::get('/settings', function () {
-//     return "Settings"; // Replace with view('settings.index') when implemented
-// })->name('settings');
+// Settings Route
+Route::get('/settings', function () {
+    return "Settings"; // Replace with view('settings.index') when implemented
+})->name('settings');
 
-// // Logout Route
-// Route::post('/logout', function () {
-//     // Handle logout logic here (e.g., Auth::logout())
-//     return redirect()->route('home');
-// })->name('logout');
+// Logout Route
+Route::post('/logout', function () {
+    // Handle logout logic here (e.g., Auth::logout())
+    return redirect()->route('home');
+})->name('logout');

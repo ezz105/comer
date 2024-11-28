@@ -97,4 +97,8 @@ class User extends Authenticatable
         return $this->role_id === 3;
     }
 
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'artisan_id');
+    }
 }
